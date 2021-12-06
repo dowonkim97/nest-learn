@@ -6,7 +6,6 @@ import {
   Param,
   Patch,
   Post,
-  Query,
 } from '@nestjs/common';
 import { Movie } from './entities/Movie.entity';
 import { MoviesService } from './movies.service';
@@ -18,11 +17,6 @@ export class MoviesController {
   @Get()
   getAll(): Movie[] {
     return this.movieService.getAll();
-  }
-
-  @Get('search')
-  search(@Query('year') searchingYear: string) {
-    return `We are searching for a movie with a title: ${searchingYear}`;
   }
 
   @Get(':id')
@@ -42,9 +36,6 @@ export class MoviesController {
 
   @Patch(`:id`)
   patch(@Param(`id`) movieId: string, @Body() updateData) {
-    return {
-      updateMovie: movieId,
-      ...updateData,
-    };
+    return this.movieService.update(movieId, updateData);
   }
 }

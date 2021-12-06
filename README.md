@@ -36,3 +36,5 @@
 ```
 
 - 로 해결했다.
+
+- HttpException에서 확장된 nestJS 기능이다 NotFoundException 예외처리한다.
