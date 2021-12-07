@@ -38,3 +38,66 @@
 - 로 해결했다.
 
 - HttpException에서 확장된 nestJS 기능이다 NotFoundException 예외처리한다.
+
+- DTO는 데이터 전송 객체로, 프로세스 간에 데이터를 전달하는 객체이다.
+  클라이언트와 서버 간에 데이터를 전송할 때 사용되고, 비지니스 로직이 없는 단순한 객체이다.
+  비지니스 로직은 유저의 눈에 보이지는 않지만, 유저가 바라는 결과물을 올바르게 도출할수 있게 짜여진 코드 로직을 말한다.
+  DTO를 사용하는 이유는 코드를 간결하게 해준다.
+
+- main.ts 유효성 검사용 파이프 생성
+
+- create-movie.dto
+  class 유효성 검사
+  npm i class-validator class-transformer
+
+- forbidNonWhitelisted를 사용하기 위해서는 whitelist가 먼저 true가 되어야 합니다. forbidNonWhitelisted 옵션은 whitelist에서 유효한 속성이 아닌 것을 제외하는 것 대신에 에러를 날려주는 것이기 때문에, 먼저 whitelist 옵션이 true로 되어있어야 사용 가능한 옵션입니다.
+
+- 클라이언트 측에서 전송한 데이터가 다음과 같을 경우
+  whitelist: true
+
+```
+{
+　 "title": "Tenet",
+　 "year": 2020,
+　 "genres": ["Action", "Sci-Fi"],
+　 "hack": "by me"
+}
+```
+
+- whitelist: true 로 설정했을 때 아래와 같이 데코레이터가 없는 속성("hack")은 제거되어 저장됩니다.
+
+```
+{
+　 id: 1,
+　 title: 'Tenet',
+　 year: 2020,
+　 genres: ['Action', 'Sci-Fi'],
+}
+```
+
+- forbidNonWhitelisted: true
+  클라이언트 측에서 전송한 데이터가 다음과 같을 경우
+
+```
+  {
+  　 "title": "Tenet",
+  　 "year": 2020,
+  　 "genres": ["Action", "Sci-Fi"],
+  　 "hack": "by me"
+  }
+```
+
+"hack"이라는 속성은 화이트리스트에 존재하지 않으므로 HttpException을 던집니다.
+
+```
+response :
+{
+　 "statusCode": 400,
+　 "message": [ "property hack should not exist" ],
+　 "error": "Bad Request"
+}
+```
+
+- getOne을 url로 보내야하는데, url로 보낸 값이 무엇이든지 string이기 때문에, stirng을 number로 바꿔줘야 한다.
+  ValidationPipe의 transform은 원하는 실제 타입으로 바꿔준다.
+  transform 지우면 string 적용하면 number
