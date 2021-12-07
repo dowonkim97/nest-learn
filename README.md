@@ -100,4 +100,24 @@ response :
 
 - getOne을 url로 보내야하는데, url로 보낸 값이 무엇이든지 string이기 때문에, stirng을 number로 바꿔줘야 한다.
   ValidationPipe의 transform은 원하는 실제 타입으로 바꿔준다.
-  transform 지우면 string 적용하면 number
+  transform 지우면 string 적용하면 number가 된다.
+
+- npm i @nestjs/mapped-types
+- 타입을 변환시키고 사용할 수 있게 하는 패키지
+
+- npm i @nestjs/swagger
+
+- @ApiProperty() 데코레이터를 써주었다.
+
+- nest g mo
+- 모듈을 새로 만든다
+
+- APPService, APPController만 가져다 써야 하기 때문에 MoviesController, MoviesService 삭제하고, 새로 생성한 모듈에 다시 작성한다.
+
+- http://localhost:3000/
+  Welocome my Movie API
+
+- 비추천 @Req() req Request, @Res() res Response
+  res.json()
+
+- fastify: express보다 2배 빠르다
