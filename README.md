@@ -121,3 +121,26 @@ response :
   res.json()
 
 - fastify: express보다 2배 빠르다
+
+- | 2021 | 12 | 10 |
+
+- "test": "jest"
+  jest는 자바스크립트를 아주 쉽게 테스팅하는 npm 패키지이다.
+
+- .sepc.ts는 테스트하는 파일이다.
+
+- npm run test:cov
+
+- movies.service.sepc.ts 파일을 찾아 몇 줄이 테스팅되었는지 알려준다.
+
+- npm run test:watch
+
+› Press a to run all tests.
+› Press f to run only failed tests.
+› Press p to filter by a filename regex pattern.
+› Press t to filter by a test name regex pattern.
+› Press q to quit watch mode.
+› Press Enter to trigger a test run.
+
+- 유닛 테스팅: 모든 fuction을 서비스에서 분리된 유닛을 따로 테스트 하는 것
+- end to end (e2e) 테스트: 모든 시스템을 테스트하는 것
