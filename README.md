@@ -144,3 +144,48 @@ response :
 
 - 유닛 테스팅: 모든 fuction을 서비스에서 분리된 유닛을 따로 테스트 하는 것
 - end to end (e2e) 테스트: 모든 시스템을 테스트하는 것
+
+- | 2021 | 12 | 11 |
+
+- movies.service.spec
+  beforeEach: 테스트 되기 전에 실행하는 것
+  it: 개별테스트
+
+```
+  it('should be 4', () => {
+    expect(2 + 3).toEqual(5);
+  });
+```
+
+- expect와 toEqual을 사용해서 첫번째 유닛 테스트를 진행함.
+  클래스는 ‘설계도’, 객체는 ‘설계도로 구현한 모든 대상’을 의미한다.
+
+- 인스턴스가 뭔지 궁금해서 찾아봤는데, 클래스의 타입으로 선언되었을 때 객체라고 부르고, 그 객체가 메모리에 할당되어 실제 사용될 때 인스턴스라고 부른다.객체는 현실 세계에 가깝고, 인스턴스는 소프트웨어 세계에 가깝다.
+  객체는 ‘실체’, 인스턴스는 ‘관계’에 초점을 맞춘다.
+  객체를 ‘클래스의 인스턴스’라고도 부른다.
+  참고 https://gmlwjd9405.github.io/2018/09/17/class-object-instance.html
+
+- toBeDefined가 뭘까 찾아봤는데,toBeUndefined의 반대 경우 확인하는 거라네..
+  참조는 https://velog.io/@modolee/jest-user-guide-04 여기서 했어
+
+- npm run test:cov
+  movies.service.ts | 66.66 | 100 | 62.5 | 64.28 | 23-24,35-37 테스트 했더니 30%정도 였는데 66%로 늘어났어
+
+- 삭제, 생성, 업데이트 등 테스트를 진행해서 100%로 완료했어
+
+- spec.ts는 유닛테스트를 위한 것
+
+- beforeAll 초기화할 때 딱 한번 수행,
+  beforeEach 테스트 메서드 실행 이전에 수행,
+  afterEach 테스트 메서드 실행 이후에 수행,
+  afterAll 해당 테스트 클래스 내 테스트 메서드를 모두 실행시킨 후 딱 한번 수행
+
+- @BeforeAll 이 실행된다.
+  --------반복------
+  @BeforeEach 가 실행된다
+  @Test 를 붙인 메서드가 실행된다.
+  @AfterEach 가 실행된다
+  --------반복------
+  @AfterAll 이 실행된다
+
+  - 알기쉽죠잉? 여기서 참조함 https://gracelove91.tistory.com/107
