@@ -12,6 +12,8 @@ export class MoviesService {
   }
 
   getOne(id: number): Movie {
+    // console.log(typeof id);
+    // movie.id 실제로 사용하는 서버는 number이고,  테스팅 서버 id는 string => main.ts
     const movie = this.movies.find((movie) => movie.id === id);
     if (!movie) {
       throw new NotFoundException(`Movie with ID ${id} not found.`);

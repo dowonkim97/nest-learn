@@ -189,3 +189,13 @@ response :
   @AfterAll 이 실행된다
 
   - 알기쉽죠잉? 여기서 참조함 https://gracelove91.tistory.com/107
+
+- | 2021 | 12 | 12 |
+
+- getOne에 console.log(id)를 찍어봤는데, 1이 나왔다.
+
+- e2e에서 .expect오류가 났는데 beforeEach -> beforeAll로 바꾸니까 해결 되었다.
+  beforeEach 테스트가 새로 생길때 새로운 앱을 만들어준다. 매번 테스트할 때 만든다.
+  그래서 데이터베이스가 비어있다. 그러므로 매번 기억하게끔 beforeAll로 바꾼다.
+
+- 끝

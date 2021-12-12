@@ -16,6 +16,9 @@ import { MoviesService } from './movies.service';
 export class MoviesController {
   constructor(private readonly movieService: MoviesService) {}
 
+  // url은 string인데 controller에서 number로 변환시켜줌
+  // e2e테스트에서는 transform이 미작동 => e2e-spec.ts
+
   @Get()
   getAll(): Movie[] {
     return this.movieService.getAll();

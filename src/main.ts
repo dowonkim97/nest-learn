@@ -9,6 +9,7 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
+      // transform은 controller에서 타입을 원하는 것으로 바꿈 => controller.ts
       transform: true,
     }),
   );
